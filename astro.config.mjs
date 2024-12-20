@@ -11,6 +11,11 @@ export default defineConfig({
       changefreq: 'weekly',
       priority: 0.7,
       lastmod: new Date().toISOString(),
+      filter: (page) => !page.includes('admin'),
+      customPages: [
+        'https://moneymasteryresources.com/',
+        'https://moneymasteryresources.com/calculators',
+      ],
       serialize(item) {
         // Ensure URLs don't have trailing slashes
         if (item.url.endsWith('/')) {
@@ -20,12 +25,9 @@ export default defineConfig({
       }
     })
   ],
-  output: 'hybrid',
+  output: 'static',
   adapter: netlify({
-    dist: new URL('./dist/', import.meta.url),
-    builders: true,
-    imageCDN: true,
-    functionPerRoute: true
+    dist: new URL('./dist/', import.meta.url)
   }),
   build: {
     format: 'directory'
