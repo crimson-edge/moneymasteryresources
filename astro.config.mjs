@@ -1,34 +1,24 @@
 import { defineConfig } from 'astro/config';
 import tailwind from "@astrojs/tailwind";
+import netlify from '@astrojs/netlify';
 
 export default defineConfig({
   site: 'https://moneymasteryresources.com',
   integrations: [tailwind()],
-  output: 'static',
-  outDir: './dist',
+  output: 'server',
+  adapter: netlify({
+    dist: new URL('./dist/', import.meta.url),
+    builders: true,
+    imageCDN: true
+  }),
   build: {
-    assets: 'assets'
-  },
-  image: {
-    domains: ['unsplash.com'],
-    service: {
-      entrypoint: 'astro/assets/services/sharp',
-    },
-    remotePatterns: [
-      { protocol: 'https', hostname: 'images.unsplash.com' }
-    ],
-    defaults: {
-      quality: 85,
-      format: ['webp', 'jpg'],
-      formatOptions: {
-        webp: { quality: 85 },
-        jpg: { quality: 85 }
-      }
-    }
+    format: 'directory'
   },
   vite: {
-    ssr: {
-      noExternal: ['@fontsource/inter', '@fontsource/space-grotesk']
+    build: {
+      rollupOptions: {
+        external: ['sharp']
+      }
     }
   }
 });
