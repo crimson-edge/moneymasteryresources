@@ -2,8 +2,13 @@ import { defineConfig } from 'astro/config';
 import tailwind from "@astrojs/tailwind";
 
 export default defineConfig({
+  site: 'https://moneymasteryresources.com',
   outDir: '/opt/build/repo/moneymasteryresources/dist',
   integrations: [tailwind()],
+  output: 'static',
+  build: {
+    assets: 'assets'
+  },
   image: {
     domains: ['unsplash.com'],
     service: {
@@ -19,6 +24,11 @@ export default defineConfig({
         webp: { quality: 85 },
         jpg: { quality: 85 }
       }
+    }
+  },
+  vite: {
+    ssr: {
+      noExternal: ['@fontsource/inter', '@fontsource/space-grotesk']
     }
   }
 });
