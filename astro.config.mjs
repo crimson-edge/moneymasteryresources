@@ -3,9 +3,9 @@ import tailwind from "@astrojs/tailwind";
 
 export default defineConfig({
   site: 'https://moneymasteryresources.com',
-  outDir: '/opt/build/repo/moneymasteryresources/dist',
   integrations: [tailwind()],
   output: 'static',
+  outDir: './dist',
   build: {
     assets: 'assets'
   },
