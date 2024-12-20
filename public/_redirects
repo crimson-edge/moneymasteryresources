@@ -1,0 +1,6 @@
+# Redirect sitemap.xml to sitemap-index.xml
+/sitemap.xml /sitemap-index.xml 301
+
+# Ensure XML files are served with correct content type
+/*.xml
+  Content-Type: application/xml; charset=utf-8
