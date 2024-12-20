@@ -1,5 +1,5 @@
 # build output
-# dist/
+dist/
 .output/
 
 # dependencies
@@ -17,9 +17,3 @@ pnpm-debug.log*
 
 # macOS-specific files
 .DS_Store
-
-# IDE specific files
-.vscode/
-.idea/
-*.swp
-*.swo

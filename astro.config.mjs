@@ -20,13 +20,5 @@ export default defineConfig({
         jpg: { quality: 85 }
       }
     }
-  },
-  vite: {
-    optimizeDeps: {
-      exclude: ['@astrojs/image']
-    },
-    ssr: {
-      noExternal: ['@astrojs/image']
-    }
   }
 });
